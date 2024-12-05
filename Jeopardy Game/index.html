@@ -1,93 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeopardy Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pop Culture Jeopardy Game</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.browser.min.js" defer></script>
 </head>
 <body>
     <h1>Pop Culture Jeopardy Game</h1>
 
-<!-- Mode Selection -->
-<div id="mode-selection">
-    <h2>Select Game Mode</h2>
-    <button onclick="startGame('solo')">Solo Mode</button>
-    <button onclick="startGame('team')">Team Mode</button>
-</div>
-
-<!-- Team Setup -->
-<div id="team-setup" style="display: none;">
-    <h2 style="color: #E09F3E; font-weight: bold;">Team Mode: Set up Teams</h2>
-    <label style="color: #ffffff; font-weight: bold;">Number of Teams (2-5): 
-        <input type="number" id="team-count" min="2" max="5" value="2">
-    </label>
-    <button onclick="initializeTeams()">Start Game</button>
-</div>
-
-<!-- Scoreboard -->
-<div id="scoreboard" style="display: none;">
-    <h2 id="player-label">Player Score: <span id="player-score">0</span></h2>
-    <div id="team-scores" style="display: none;">
-        <!-- Dynamic team scores will be inserted here -->
+    <!-- Mode Selection -->
+    <div id="mode-selection">
+        <h2>Select Game Mode</h2>
+        <button onclick="startGame('solo')">Solo Mode</button>
+        <button onclick="startGame('team')">Team Mode</button>
     </div>
-    <h3 id="current-turn" style="display: none;"></h3>
-</div>
 
-    <div class="board">
-        
-        <!-- Category Headers -->
+    <!-- Team Setup -->
+    <div id="team-setup" style="display: none;">
+        <h2 style="color: #E09F3E; font-weight: bold;">Team Mode: Set up Teams</h2>
+        <label style="color: #ffffff; font-weight: bold;">Number of Teams (2-5): 
+            <input type="number" id="team-count" min="2" max="5" value="2">
+        </label>
+        <button onclick="initializeTeams()">Start Game</button>
+    </div>
+
+    <!-- Scoreboard -->
+    <div id="scoreboard" style="display: none;">
+        <h2 id="player-label">Player Score: <span id="player-score">0</span></h2>
+        <div id="team-scores" style="display: none;"></div>
+        <h3 id="current-turn" style="display: none;"></h3>
+    </div>
+
+    <!-- Game Board -->
+    <div class="board" style="display:none;">
         <div class="category">Movies</div>
         <div class="category">Superheroes</div>
         <div class="category">Musical Legends</div>
         <div class="category">TV Phenomena</div>
         <div class="category">Pop Icons</div>
 
-        <!-- Questions -->
-        <div class="question" onclick="showQuestion('Movies', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('Superheroes', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('Musical Legends', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('TV Phenomena', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('Pop Icons', 100, this)">100</div>
 
-        <div class="question" onclick="showQuestion('Movies', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('Superheroes', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('Musical Legends', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('TV Phenomena', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('Pop Icons', 200, this)">200</div>
+        <!-- Questions (all lowercase categories) -->
+        <div class="question" onclick="showQuestion('movies', 100, this)">100</div>
+        <div class="question" onclick="showQuestion('superheroes', 100, this)">100</div>
+        <div class="question" onclick="showQuestion('musical legends', 100, this)">100</div>
+        <div class="question" onclick="showQuestion('tv phenomena', 100, this)">100</div>
+        <div class="question" onclick="showQuestion('pop icons', 100, this)">100</div>
 
-        <div class="question" onclick="showQuestion('Movies', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('Superheroes', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('Musical Legends', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('TV Phenomena', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('Pop Icons', 300, this)">300</div>
+        <div class="question" onclick="showQuestion('movies', 200, this)">200</div>
+        <div class="question" onclick="showQuestion('superheroes', 200, this)">200</div>
+        <div class="question" onclick="showQuestion('musical legends', 200, this)">200</div>
+        <div class="question" onclick="showQuestion('tv phenomena', 200, this)">200</div>
+        <div class="question" onclick="showQuestion('pop icons', 200, this)">200</div>
 
-        <div class="question" onclick="showQuestion('Movies', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('Superheroes', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('Musical Legends', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('TV Phenomena', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('Pop Icons', 400, this)">400</div>
+        <div class="question" onclick="showQuestion('movies', 300, this)">300</div>
+        <div class="question" onclick="showQuestion('superheroes', 300, this)">300</div>
+        <div class="question" onclick="showQuestion('musical legends', 300, this)">300</div>
+        <div class="question" onclick="showQuestion('tv phenomena', 300, this)">300</div>
+        <div class="question" onclick="showQuestion('pop icons', 300, this)">300</div>
 
-        <div class="question" onclick="showQuestion('Movies', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('Superheroes', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('Musical Legends', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('TV Phenomena', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('Pop Icons', 500, this)">500</div>
+        <div class="question" onclick="showQuestion('movies', 400, this)">400</div>
+        <div class="question" onclick="showQuestion('superheroes', 400, this)">400</div>
+        <div class="question" onclick="showQuestion('musical legends', 400, this)">400</div>
+        <div class="question" onclick="showQuestion('tv phenomena', 400, this)">400</div>
+        <div class="question" onclick="showQuestion('pop icons', 400, this)">400</div>
 
+        <div class="question" onclick="showQuestion('movies', 500, this)">500</div>
+        <div class="question" onclick="showQuestion('superheroes', 500, this)">500</div>
+        <div class="question" onclick="showQuestion('musical legends', 500, this)">500</div>
+        <div class="question" onclick="showQuestion('tv phenomena', 500, this)">500</div>
+        <div class="question" onclick="showQuestion('pop icons', 500, this)">500</div>
     </div>
 
+    <!-- Modal -->
     <div id="modal" class="modal">
         <div id="modal-content" class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <p id="question-text">Question will appear here</p>
             <button onclick="revealAnswer()">Reveal Answer</button>
             <p id="answer-text"></p>
-
-            <!-- Buttons to add points or skip -->
             <button class="correct-btn" onclick="addPoints(true)">Correct</button>
             <button class="incorrect-btn" onclick="addPoints(false)">Incorrect</button>
         </div>
     </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot-container">
+        <div id="chatbot-ball" onclick="toggleChatbox()">💬</div>
+        <div id="chatbox" class="hidden">
+            <h2>Ask the Chatbot</h2>
+            <input type="text" id="chatbot-input" placeholder="Hint for movies 100" />
+            <button onclick="askChatbot()">Ask</button>
+            <div id="chatbot-response"></div>
+        </div>
+    </div>
+
+    <!-- End Game Message -->
+    <div id="end-game-message"></div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
 
     <script src="script.js"></script>
 </body>
