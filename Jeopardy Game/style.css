@@ -3,6 +3,8 @@ body {
     text-align: center;
     background-color: #720026;
     color: #080705;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -10,95 +12,10 @@ h1 {
     color: #fefefe;
 }
 
-#scoreboard {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.board {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.category {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #E09F3E;
-    padding: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.question {
-    background-color: #fefefe;
-    padding: 20px;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    color: black;
-}
-
-.close {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#answer-text {
-    display: none;
-}
-
-.correct-btn, .incorrect-btn {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.correct-btn {
-    background-color: #2ECC40;
-    color: white;
-}
-
-.incorrect-btn {
-    background-color: #FF4136;
-    color: white;
-}
-
+/* Mode Selection Styling */
 #mode-selection {
     margin: 20px 0;
     text-align: center;
-    color: #fefefe
-}
-
-#mode-selection h3 {
     color: #fefefe;
 }
 
@@ -112,7 +29,230 @@ h1 {
     cursor: pointer;
     border-radius: 5px;
 }
-
 #mode-selection button:hover {
+    background-color: #555;
+}
+
+/* Team Setup Styling */
+#team-setup h2 {
+    color: #E09F3E;
+    font-weight: bold;
+}
+#team-setup label {
+    color: #ffffff;
+    font-weight: bold;
+}
+#team-setup input[type="number"] {
+    padding: 5px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+#team-setup button {
     background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+#team-setup button:hover {
+    background-color: #555;
+}
+
+/* Scoreboard Styling */
+#scoreboard {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+#team-scores div {
+    margin: 5px 0;
+}
+
+/* Game Board Styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E09F3E;
+    padding: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 5px;
+}
+
+.question {
+    background-color: #fefefe;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.question:hover {
+    background-color: #ddd;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+}
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: red;
+}
+#answer-text {
+    display: none;
+}
+.correct-btn, .incorrect-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+.correct-btn {
+    background-color: #2ECC40;
+    color: white;
+}
+.incorrect-btn {
+    background-color: #FF4136;
+    color: white;
+}
+
+/* Chatbot Container */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#chatbot-ball {
+    width: 60px;
+    height: 60px;
+    background-color: #E09F3E;
+    color: white;
+    font-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1001;
+}
+#chatbot-ball:hover {
+    transform: scale(1.1);
+}
+
+#chatbox {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 300px;
+    padding: 20px;
+    background-color: #E09F3E;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+}
+
+#chatbox h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+#chatbox input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+#chatbox button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#chatbox button:hover {
+    background-color: #555;
+}
+.hidden {
+    display: none;
+}
+
+/* End Game Message */
+#end-game-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-size: 1.5em;
+    text-align: center;
+    max-width: 600px;
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9998;
 }
