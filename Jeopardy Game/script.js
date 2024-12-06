@@ -101,14 +101,44 @@ function showQuestion(category, value, element) {
 
         element.style.pointerEvents = 'none';
         element.style.backgroundColor = '#aaa';
+
+        // Timer Logic
+        let timeLeft = 10;
+        document.getElementById('time-left').textContent = timeLeft;
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            document.getElementById('time-left').textContent = timeLeft;
+            if (timeLeft === 0) {
+                clearInterval(timerInterval);
+                closeModal();
+                alert('Time is up!');
+            }
+        }, 1000);
     }
 }
 
-function revealAnswer() {
-    document.getElementById('answer-text').style.display = 'block';
+function toggleAnswer() {
+    const answerText = document.getElementById('answer-text');
+    const revealButton = document.querySelector('button[onclick="toggleAnswer()"]');
+    if (answerText.style.display === 'none' || !answerText.style.display) {
+        answerText.style.display = 'block';
+        revealButton.textContent = 'Hide Answer';
+    } else {
+        answerText.style.display = 'none';
+        revealButton.textContent = 'Reveal Answer';
+    }
 }
 
 function addPoints(isCorrect) {
+    const modalContent = document.getElementById('modal-content');
+    if (isCorrect) {
+        modalContent.classList.add('correct-answer');
+        setTimeout(() => modalContent.classList.remove('correct-answer'), 2000);
+    } else {
+        modalContent.classList.add('incorrect-answer');
+        setTimeout(() => modalContent.classList.remove('incorrect-answer'), 2000);
+    }
+
     if (gameMode === 'solo') {
         if (isCorrect) {
             playerScore += currentValue;
@@ -128,8 +158,10 @@ function addPoints(isCorrect) {
     }
 
     totalQuestionsAnswered++;
+    document.getElementById('questions-answered').textContent = totalQuestionsAnswered;
+
     if (totalQuestionsAnswered === totalQuestions) {
-        endGame(); // Ensure endGame is called
+        endGame();
     }
 
     closeModal();
@@ -137,6 +169,7 @@ function addPoints(isCorrect) {
 
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
+    clearInterval(timerInterval);
 }
 
 // Chatbot logic
@@ -168,28 +201,21 @@ function askChatbot() {
 
 // End game logic
 function endGame() {
-    console.log("EndGame triggered");
-    console.log("Game Mode:", gameMode);
-    console.log("Teams:", teams);
-
     const endGameMessageDiv = document.getElementById('end-game-message');
 
     if (gameMode === 'solo') {
-        console.log("Solo Mode Final Score:", playerScore);
         if (playerScore > 3750) {
             endGameMessageDiv.textContent = `🎉 Congratulations! You won with a total score of ${playerScore}! 🎉`;
         } else {
             endGameMessageDiv.textContent = "😔 Better luck next time! Keep practicing for the next game.";
         }
     } else if (gameMode === 'team') {
-        console.log("Team Mode: Calculating winning team...");
         let winningTeam = teams[0];
         for (let i = 1; i < teams.length; i++) {
             if (teams[i].score > winningTeam.score) {
                 winningTeam = teams[i];
             }
         }
-        console.log("Winning Team:", winningTeam);
 
         if (winningTeam) {
             endGameMessageDiv.textContent = `🎉 Congratulations ${winningTeam.name}! You won with a score of ${winningTeam.score}! 🎉`;
@@ -198,28 +224,29 @@ function endGame() {
         }
     }
 
-    // Display the message and launch confetti
     endGameMessageDiv.style.display = 'block';
-    console.log("Displaying endGame message");
     launchConfetti();
-    console.log("Confetti launched");
 
-    // Disable the game board
     document.querySelector('.board').style.pointerEvents = 'none';
     document.querySelector('.board').style.opacity = '0.5';
 }
 
 function launchConfetti() {
     const canvas = document.getElementById('confetti-canvas');
-    if (!canvas) {
-        console.error("Confetti canvas not found!");
-        return;
-    }
     const myConfetti = confetti.create(canvas, { resize: true });
     myConfetti({
-        particleCount: 200,
-        spread: 70,
+        particleCount: 300,
+        spread: 100,
         origin: { y: 0.6 }
     });
-    console.log("Confetti function executed");
 }
+
+// Accessibility: Keyboard navigation
+document.addEventListener('keydown', (event) => {
+    const focused = document.activeElement;
+    if (focused.classList.contains('question')) {
+        if (event.key === 'ArrowRight') focused.nextElementSibling?.focus();
+        if (event.key === 'ArrowLeft') focused.previousElementSibling?.focus();
+        if (event.key === 'Enter') focused.click();
+    }
+});
