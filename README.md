@@ -14,6 +14,9 @@ The game features a simple, responsive interface that can be played on both desk
 
 ## Files Included
 
+- **`welcome.html`**: 
+   - The `welcome.html` file serves as the entry point for the Jeopardy game. It provides an introductory page where users can learn about the game, see instructions, and navigate to start the game. This page helps set up the user's experience before diving into the gameplay.
+
 - **`index.html`**: 
    - This is the main structure of the game. It contains the HTML layout for the game board, where categories and questions are displayed. It also includes placeholders for the player score and game flow elements.
   
