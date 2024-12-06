@@ -2,6 +2,46 @@
 
 This repository contains the source code for a **Jeopardy game** built using **HTML**, **CSS**, and **JavaScript**. The game mimics the format of the popular TV show, allowing players to select questions from different categories and answer them for points. It's a fun and educational way to interact with web technologies and practice basic programming skills.
 
+## Mission Statement
+
+The mission of the Jeopardy Game project is to create an engaging, interactive, and educational web application that allows users to experience the excitement of the popular TV game show, **Jeopardy!**. This project aims to:
+- Provide an enjoyable, accessible game for users of all ages.
+- Promote learning through fun and interactive gameplay.
+- Continuously evolve and improve based on user feedback and contributions.
+- Foster an open-source community where anyone can contribute and enhance the project.
+
+Our goal is to make this game a fun and educational experience, encouraging users to learn while playing.
+
+## Code of Conduct
+
+We are committed to providing a welcoming and harassment-free experience for everyone, regardless of their gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, ethnicity, age, religion, or technology choices.
+
+### Our Pledge
+
+In the interest of fostering an open and welcoming environment, we pledge that all participants will:
+- Be respectful and considerate to others.
+- Communicate openly and respectfully with others, regardless of differences.
+- Help others by providing constructive feedback and offering assistance when possible.
+- Address negative or harmful behaviors in a respectful manner.
+
+### Our Standards
+
+Examples of behavior that contribute to creating a positive environment include:
+- Using welcoming and inclusive language.
+- Being respectful of differing viewpoints and experiences.
+- Acknowledging and appreciating others’ contributions.
+
+Examples of unacceptable behavior include:
+- The use of sexualized language or imagery and unwelcome advances.
+- Trolling, insulting/derogatory comments, and personal or political attacks.
+- Harassment, intimidation, or bullying.
+
+### Enforcement
+
+Participants asked to stop any unacceptable behavior are expected to comply immediately. If a participant engages in unacceptable behavior, the project maintainers may take any action they deem appropriate, including a temporary or permanent ban from the project.
+
+For questions or concerns, please reach out to the maintainers via [contact information or GitHub issues].
+
 ## Project Overview
 
 The Jeopardy game is designed to be a fully interactive, web-based experience. Users can:
