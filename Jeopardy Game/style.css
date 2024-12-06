@@ -12,6 +12,49 @@ h1 {
     color: #fefefe;
 }
 
+/* Welcome Page Styling */
+#welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #720026;
+    color: #fefefe;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#welcome-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #333;
+}
+
+#welcome-container p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+#welcome-container button {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+#welcome-container button:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
 /* Mode Selection Styling */
 #mode-selection {
     margin: 20px 0;
@@ -29,6 +72,7 @@ h1 {
     cursor: pointer;
     border-radius: 5px;
 }
+
 #mode-selection button:hover {
     background-color: #555;
 }
@@ -38,16 +82,19 @@ h1 {
     color: #E09F3E;
     font-weight: bold;
 }
+
 #team-setup label {
     color: #ffffff;
     font-weight: bold;
 }
+
 #team-setup input[type="number"] {
     padding: 5px;
     font-size: 1em;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
 #team-setup button {
     background-color: #333;
     color: white;
@@ -58,6 +105,7 @@ h1 {
     border-radius: 5px;
     margin-top: 10px;
 }
+
 #team-setup button:hover {
     background-color: #555;
 }
@@ -73,8 +121,15 @@ h1 {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
 #team-scores div {
     margin: 5px 0;
+}
+
+#progress-indicator {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #ffffff;
 }
 
 /* Game Board Styling */
@@ -98,6 +153,12 @@ h1 {
     border-radius: 5px;
 }
 
+.category.selected-category {
+    border: 2px solid #E09F3E;
+    background-color: #ffe6cc;
+    transition: background-color 0.3s ease;
+}
+
 .question {
     background-color: #fefefe;
     padding: 20px;
@@ -106,9 +167,13 @@ h1 {
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
 }
+
 .question:hover {
     background-color: #ddd;
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Modal Styling */
@@ -122,6 +187,7 @@ h1 {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -132,18 +198,22 @@ h1 {
     border-radius: 10px;
     text-align: center;
 }
+
 .close {
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
 }
+
 .close:hover {
     color: red;
 }
+
 #answer-text {
     display: none;
 }
+
 .correct-btn, .incorrect-btn {
     padding: 10px 20px;
     margin: 10px;
@@ -152,13 +222,21 @@ h1 {
     border-radius: 5px;
     border: none;
 }
+
 .correct-btn {
     background-color: #2ECC40;
     color: white;
 }
+
 .incorrect-btn {
     background-color: #FF4136;
     color: white;
+}
+
+#timer {
+    font-size: 1.2em;
+    color: #ff4136;
+    margin: 10px 0;
 }
 
 /* Chatbot Container */
@@ -183,6 +261,7 @@ h1 {
     transition: transform 0.3s ease;
     z-index: 1001;
 }
+
 #chatbot-ball:hover {
     transform: scale(1.1);
 }
@@ -205,6 +284,7 @@ h1 {
     margin-bottom: 10px;
     font-size: 1.2em;
 }
+
 #chatbox input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -214,6 +294,7 @@ h1 {
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+
 #chatbox button {
     width: 100%;
     padding: 10px;
@@ -224,9 +305,11 @@ h1 {
     cursor: pointer;
     border-radius: 5px;
 }
+
 #chatbox button:hover {
     background-color: #555;
 }
+
 .hidden {
     display: none;
 }
