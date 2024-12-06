@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pop Culture Jeopardy Game</title>
     <link rel="stylesheet" href="style.css">
     <!-- Confetti Library -->
@@ -32,6 +32,7 @@
         <h2 id="player-label">Player Score: <span id="player-score">0</span></h2>
         <div id="team-scores" style="display: none;"></div>
         <h3 id="current-turn" style="display: none;"></h3>
+        <div id="progress-indicator">Progress: <span id="questions-answered">0</span> / 25</div>
     </div>
 
     <!-- Game Board -->
@@ -42,37 +43,36 @@
         <div class="category">TV Phenomena</div>
         <div class="category">Pop Icons</div>
 
+        <!-- Questions -->
+        <div class="question" tabindex="0" onclick="showQuestion('movies', 100, this)">100</div>
+        <div class="question" tabindex="0" onclick="showQuestion('superheroes', 100, this)">100</div>
+        <div class="question" tabindex="0" onclick="showQuestion('musical legends', 100, this)">100</div>
+        <div class="question" tabindex="0" onclick="showQuestion('tv phenomena', 100, this)">100</div>
+        <div class="question" tabindex="0" onclick="showQuestion('pop icons', 100, this)">100</div>
 
-        <!-- Questions (all lowercase categories) -->
-        <div class="question" onclick="showQuestion('movies', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('superheroes', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('musical legends', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('tv phenomena', 100, this)">100</div>
-        <div class="question" onclick="showQuestion('pop icons', 100, this)">100</div>
+        <div class="question" tabindex="0" onclick="showQuestion('movies', 200, this)">200</div>
+        <div class="question" tabindex="0" onclick="showQuestion('superheroes', 200, this)">200</div>
+        <div class="question" tabindex="0" onclick="showQuestion('musical legends', 200, this)">200</div>
+        <div class="question" tabindex="0" onclick="showQuestion('tv phenomena', 200, this)">200</div>
+        <div class="question" tabindex="0" onclick="showQuestion('pop icons', 200, this)">200</div>
 
-        <div class="question" onclick="showQuestion('movies', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('superheroes', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('musical legends', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('tv phenomena', 200, this)">200</div>
-        <div class="question" onclick="showQuestion('pop icons', 200, this)">200</div>
+        <div class="question" tabindex="0" onclick="showQuestion('movies', 300, this)">300</div>
+        <div class="question" tabindex="0" onclick="showQuestion('superheroes', 300, this)">300</div>
+        <div class="question" tabindex="0" onclick="showQuestion('musical legends', 300, this)">300</div>
+        <div class="question" tabindex="0" onclick="showQuestion('tv phenomena', 300, this)">300</div>
+        <div class="question" tabindex="0" onclick="showQuestion('pop icons', 300, this)">300</div>
 
-        <div class="question" onclick="showQuestion('movies', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('superheroes', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('musical legends', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('tv phenomena', 300, this)">300</div>
-        <div class="question" onclick="showQuestion('pop icons', 300, this)">300</div>
+        <div class="question" tabindex="0" onclick="showQuestion('movies', 400, this)">400</div>
+        <div class="question" tabindex="0" onclick="showQuestion('superheroes', 400, this)">400</div>
+        <div class="question" tabindex="0" onclick="showQuestion('musical legends', 400, this)">400</div>
+        <div class="question" tabindex="0" onclick="showQuestion('tv phenomena', 400, this)">400</div>
+        <div class="question" tabindex="0" onclick="showQuestion('pop icons', 400, this)">400</div>
 
-        <div class="question" onclick="showQuestion('movies', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('superheroes', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('musical legends', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('tv phenomena', 400, this)">400</div>
-        <div class="question" onclick="showQuestion('pop icons', 400, this)">400</div>
-
-        <div class="question" onclick="showQuestion('movies', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('superheroes', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('musical legends', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('tv phenomena', 500, this)">500</div>
-        <div class="question" onclick="showQuestion('pop icons', 500, this)">500</div>
+        <div class="question" tabindex="0" onclick="showQuestion('movies', 500, this)">500</div>
+        <div class="question" tabindex="0" onclick="showQuestion('superheroes', 500, this)">500</div>
+        <div class="question" tabindex="0" onclick="showQuestion('musical legends', 500, this)">500</div>
+        <div class="question" tabindex="0" onclick="showQuestion('tv phenomena', 500, this)">500</div>
+        <div class="question" tabindex="0" onclick="showQuestion('pop icons', 500, this)">500</div>
     </div>
 
     <!-- Modal -->
@@ -80,7 +80,8 @@
         <div id="modal-content" class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <p id="question-text">Question will appear here</p>
-            <button onclick="revealAnswer()">Reveal Answer</button>
+            <p id="timer">Time Remaining: <span id="time-left">10</span> seconds</p>
+            <button onclick="toggleAnswer()">Reveal Answer</button>
             <p id="answer-text"></p>
             <button class="correct-btn" onclick="addPoints(true)">Correct</button>
             <button class="incorrect-btn" onclick="addPoints(false)">Incorrect</button>
